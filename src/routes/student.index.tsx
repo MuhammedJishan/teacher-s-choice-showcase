@@ -9,7 +9,7 @@ export const Route = createFileRoute("/student/")({
   component: StudentDashboard,
 });
 
-export const fireProgress = Math.round((fireLessons.filter((l) => l.done).length / fireLessons.length) * 100);
+const fireProgress = Math.round((fireLessons.filter((l) => l.done).length / fireLessons.length) * 100);
 
 function StudentDashboard() {
   const xpPct = Math.round((student.xp / student.nextLevelXp) * 100);

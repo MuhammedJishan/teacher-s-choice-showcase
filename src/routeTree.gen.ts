@@ -10,33 +10,181 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudentRouteImport } from './routes/student'
+import { Route as TeacherRouteImport } from './routes/teacher'
+import { Route as StudentIndexRouteImport } from './routes/student.index'
+import { Route as StudentAchievementsRouteImport } from './routes/student.achievements'
+import { Route as StudentChallengesRouteImport } from './routes/student.challenges'
+import { Route as StudentLeaderboardRouteImport } from './routes/student.leaderboard'
+import { Route as StudentLearnRouteImport } from './routes/student.learn'
+import { Route as StudentProfileRouteImport } from './routes/student.profile'
+import { Route as StudentProgressRouteImport } from './routes/student.progress'
+import { Route as StudentSimulationsRouteImport } from './routes/student.simulations'
+import { Route as StudentModulesIndexRouteImport } from './routes/student.modules.index'
+import { Route as StudentModulesSlugRouteImport } from './routes/student.modules.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentRoute = StudentRouteImport.update({
+  id: '/student',
+  path: '/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeacherRoute = TeacherRouteImport.update({
+  id: '/teacher',
+  path: '/teacher',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentIndexRoute = StudentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentAchievementsRoute = StudentAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentChallengesRoute = StudentChallengesRouteImport.update({
+  id: '/challenges',
+  path: '/challenges',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentLeaderboardRoute = StudentLeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentLearnRoute = StudentLearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentProfileRoute = StudentProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentProgressRoute = StudentProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentSimulationsRoute = StudentSimulationsRouteImport.update({
+  id: '/simulations',
+  path: '/simulations',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentModulesIndexRoute = StudentModulesIndexRouteImport.update({
+  id: '/modules/',
+  path: '/modules/',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentModulesSlugRoute = StudentModulesSlugRouteImport.update({
+  id: '/modules/$slug',
+  path: '/modules/$slug',
+  getParentRoute: () => StudentRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/student': typeof StudentRouteWithChildren
+  '/teacher': typeof TeacherRoute
+  '/student/achievements': typeof StudentAchievementsRoute
+  '/student/challenges': typeof StudentChallengesRoute
+  '/student/leaderboard': typeof StudentLeaderboardRoute
+  '/student/learn': typeof StudentLearnRoute
+  '/student/profile': typeof StudentProfileRoute
+  '/student/progress': typeof StudentProgressRoute
+  '/student/simulations': typeof StudentSimulationsRoute
+  '/student/': typeof StudentIndexRoute
+  '/student/modules/$slug': typeof StudentModulesSlugRoute
+  '/student/modules/': typeof StudentModulesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/teacher': typeof TeacherRoute
+  '/student/achievements': typeof StudentAchievementsRoute
+  '/student/challenges': typeof StudentChallengesRoute
+  '/student/leaderboard': typeof StudentLeaderboardRoute
+  '/student/learn': typeof StudentLearnRoute
+  '/student/profile': typeof StudentProfileRoute
+  '/student/progress': typeof StudentProgressRoute
+  '/student/simulations': typeof StudentSimulationsRoute
+  '/student': typeof StudentIndexRoute
+  '/student/modules/$slug': typeof StudentModulesSlugRoute
+  '/student/modules': typeof StudentModulesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/student': typeof StudentRouteWithChildren
+  '/teacher': typeof TeacherRoute
+  '/student/achievements': typeof StudentAchievementsRoute
+  '/student/challenges': typeof StudentChallengesRoute
+  '/student/leaderboard': typeof StudentLeaderboardRoute
+  '/student/learn': typeof StudentLearnRoute
+  '/student/profile': typeof StudentProfileRoute
+  '/student/progress': typeof StudentProgressRoute
+  '/student/simulations': typeof StudentSimulationsRoute
+  '/student/': typeof StudentIndexRoute
+  '/student/modules/$slug': typeof StudentModulesSlugRoute
+  '/student/modules/': typeof StudentModulesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/student'
+    | '/teacher'
+    | '/student/achievements'
+    | '/student/challenges'
+    | '/student/leaderboard'
+    | '/student/learn'
+    | '/student/profile'
+    | '/student/progress'
+    | '/student/simulations'
+    | '/student/'
+    | '/student/modules/$slug'
+    | '/student/modules/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/teacher'
+    | '/student/achievements'
+    | '/student/challenges'
+    | '/student/leaderboard'
+    | '/student/learn'
+    | '/student/profile'
+    | '/student/progress'
+    | '/student/simulations'
+    | '/student'
+    | '/student/modules/$slug'
+    | '/student/modules'
+  id:
+    | '__root__'
+    | '/'
+    | '/student'
+    | '/teacher'
+    | '/student/achievements'
+    | '/student/challenges'
+    | '/student/leaderboard'
+    | '/student/learn'
+    | '/student/profile'
+    | '/student/progress'
+    | '/student/simulations'
+    | '/student/'
+    | '/student/modules/$slug'
+    | '/student/modules/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  StudentRoute: typeof StudentRouteWithChildren
+  TeacherRoute: typeof TeacherRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +196,126 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student': {
+      id: '/student'
+      path: '/student'
+      fullPath: '/student'
+      preLoaderRoute: typeof StudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teacher': {
+      id: '/teacher'
+      path: '/teacher'
+      fullPath: '/teacher'
+      preLoaderRoute: typeof TeacherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/student/': {
+      id: '/student/'
+      path: '/'
+      fullPath: '/student/'
+      preLoaderRoute: typeof StudentIndexRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/achievements': {
+      id: '/student/achievements'
+      path: '/achievements'
+      fullPath: '/student/achievements'
+      preLoaderRoute: typeof StudentAchievementsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/challenges': {
+      id: '/student/challenges'
+      path: '/challenges'
+      fullPath: '/student/challenges'
+      preLoaderRoute: typeof StudentChallengesRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/leaderboard': {
+      id: '/student/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/student/leaderboard'
+      preLoaderRoute: typeof StudentLeaderboardRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/learn': {
+      id: '/student/learn'
+      path: '/learn'
+      fullPath: '/student/learn'
+      preLoaderRoute: typeof StudentLearnRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/profile': {
+      id: '/student/profile'
+      path: '/profile'
+      fullPath: '/student/profile'
+      preLoaderRoute: typeof StudentProfileRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/progress': {
+      id: '/student/progress'
+      path: '/progress'
+      fullPath: '/student/progress'
+      preLoaderRoute: typeof StudentProgressRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/simulations': {
+      id: '/student/simulations'
+      path: '/simulations'
+      fullPath: '/student/simulations'
+      preLoaderRoute: typeof StudentSimulationsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/modules/': {
+      id: '/student/modules/'
+      path: '/modules'
+      fullPath: '/student/modules/'
+      preLoaderRoute: typeof StudentModulesIndexRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/modules/$slug': {
+      id: '/student/modules/$slug'
+      path: '/modules/$slug'
+      fullPath: '/student/modules/$slug'
+      preLoaderRoute: typeof StudentModulesSlugRouteImport
+      parentRoute: typeof StudentRoute
+    }
   }
 }
 
+interface StudentRouteChildren {
+  StudentAchievementsRoute: typeof StudentAchievementsRoute
+  StudentChallengesRoute: typeof StudentChallengesRoute
+  StudentLeaderboardRoute: typeof StudentLeaderboardRoute
+  StudentLearnRoute: typeof StudentLearnRoute
+  StudentProfileRoute: typeof StudentProfileRoute
+  StudentProgressRoute: typeof StudentProgressRoute
+  StudentSimulationsRoute: typeof StudentSimulationsRoute
+  StudentIndexRoute: typeof StudentIndexRoute
+  StudentModulesSlugRoute: typeof StudentModulesSlugRoute
+  StudentModulesIndexRoute: typeof StudentModulesIndexRoute
+}
+
+const StudentRouteChildren: StudentRouteChildren = {
+  StudentAchievementsRoute: StudentAchievementsRoute,
+  StudentChallengesRoute: StudentChallengesRoute,
+  StudentLeaderboardRoute: StudentLeaderboardRoute,
+  StudentLearnRoute: StudentLearnRoute,
+  StudentProfileRoute: StudentProfileRoute,
+  StudentProgressRoute: StudentProgressRoute,
+  StudentSimulationsRoute: StudentSimulationsRoute,
+  StudentIndexRoute: StudentIndexRoute,
+  StudentModulesSlugRoute: StudentModulesSlugRoute,
+  StudentModulesIndexRoute: StudentModulesIndexRoute,
+}
+
+const StudentRouteWithChildren =
+  StudentRoute._addFileChildren(StudentRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  StudentRoute: StudentRouteWithChildren,
+  TeacherRoute: TeacherRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
