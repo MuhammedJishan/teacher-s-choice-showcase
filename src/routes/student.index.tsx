@@ -56,8 +56,8 @@ function StudentDashboard() {
         <Panel title="Recommended missions" className="lg:col-span-2" action={<Link to="/student/learn" className="text-sm font-semibold text-teal">See all</Link>}>
           <div className="space-y-3">
             {[
-              { icon: BookOpen, t: fireLessons[5].title, s: `Lesson · ${fireLessons[5].minutes} min`, xp: fireLessons[5].xp, to: "/student/learn" as const, tone: "teal" as const },
-              { icon: Gamepad2, t: simulations[2].title, s: `Simulation · ${simulations[2].difficulty}`, xp: simulations[2].xp, to: "/student/simulations" as const, tone: "indigo" as const },
+              { icon: BookOpen, t: fireLessons[5]!.title, s: `Lesson · ${fireLessons[5]!.minutes} min`, xp: fireLessons[5]!.xp, to: "/student/learn" as const, tone: "teal" as const },
+              { icon: Gamepad2, t: simulations[2]!.title, s: `Simulation · ${simulations[2]!.difficulty}`, xp: simulations[2]!.xp, to: "/student/simulations" as const, tone: "indigo" as const },
               { icon: Target, t: "Know Your Alarms", s: "Challenge · 4 min", xp: 80, to: "/student/challenges" as const, tone: "amber" as const },
             ].map((r) => (
               <Link key={r.t} to={r.to} className="group flex items-center gap-4 rounded-xl border p-4 transition-colors hover:border-teal hover:bg-accent/40">

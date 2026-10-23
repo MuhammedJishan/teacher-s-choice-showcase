@@ -17,13 +17,13 @@ export const Route = createFileRoute("/teacher/assignments")({
 function Assignments() {
   const [list, setList] = useState<Assignment[]>(initialAssignments);
   const [title, setTitle] = useState("");
-  const [cls, setCls] = useState(classes[0]);
-  const [activity, setActivity] = useState(activities[0]);
+  const [cls, setCls] = useState(classes[0]!);
+  const [activity, setActivity] = useState(activities[0]!);
   const [due, setDue] = useState("");
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim() || !due) return toast.error("Add a title and a deadline");
+    if (!title.trim() || !due) { toast.error("Add a title and a deadline"); return; }
     setList((l) => [{ id: crypto.randomUUID(), title, cls, activity, due, submitted: 0, total: 30 }, ...l]);
     setTitle(""); setDue("");
     toast.success("Assignment created", { description: `${cls} · due ${due}` });

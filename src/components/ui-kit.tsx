@@ -99,7 +99,7 @@ export function StatusPill({ status }: { status: DisasterModule["status"] }) {
   );
 }
 
-export function ModuleCard({ module, base, progress }: { module: DisasterModule; base: "/student/modules" | "/teacher/modules"; progress?: number }) {
+export function ModuleCard({ module, base, progress }: { module: DisasterModule; base: "/student/modules" | "/teacher/modules"; progress?: number | undefined }) {
   const available = module.status === "available";
   return (
     <Link

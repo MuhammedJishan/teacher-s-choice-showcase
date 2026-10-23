@@ -22,10 +22,10 @@ const fireSpots = ["Corridor", "Electrical room", "Lab bench", "Kitchen", "Stair
 function Scenarios() {
   const [list, setList] = useState<Scenario[]>(initialScenarios);
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({ title: "", location: layouts[0], difficulty: "Beginner" as Scenario["difficulty"], exits: "2", fire: fireSpots[0], blocked: "0" });
+  const [form, setForm] = useState({ title: "", location: layouts[0]!, difficulty: "Beginner" as Scenario["difficulty"], exits: "2", fire: fireSpots[0]!, blocked: "0" });
 
   const create = () => {
-    if (!form.title.trim()) return toast.error("Give your scenario a title");
+    if (!form.title.trim()) { toast.error("Give your scenario a title"); return; }
     const hazards = [`Fire at ${form.fire.toLowerCase()}`, ...(Number(form.blocked) ? [`${form.blocked} blocked exit(s)`] : [])];
     setList((l) => [{ id: crypto.randomUUID(), title: form.title, location: form.location, difficulty: form.difficulty, exits: Number(form.exits), hazards, status: "Draft", plays: 0 }, ...l]);
     setOpen(false);

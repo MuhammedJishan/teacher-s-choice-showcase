@@ -39,7 +39,7 @@ function Quiz() {
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-  const q = sampleQuiz[i];
+  const q = sampleQuiz[i]!;
 
   const pick = (k: number) => {
     if (picked !== null) return;

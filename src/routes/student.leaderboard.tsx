@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/student/leaderboard")({
   head: () => ({ meta: [{ title: "Leaderboard · ReadySphere" }, { name: "description", content: "See how your preparedness XP compares." }, { property: "og:title", content: "Leaderboard · ReadySphere" }, { property: "og:description", content: "See how your preparedness XP compares." }] }),
   component: () => {
-    const [a, b, c] = leaderboard;
+    const [a, b, c] = leaderboard as [typeof leaderboard[0], typeof leaderboard[0], typeof leaderboard[0]];
     const podium = [{ p: b, n: 2, h: "h-28" }, { p: a, n: 1, h: "h-36" }, { p: c, n: 3, h: "h-20" }];
     return (
       <>
