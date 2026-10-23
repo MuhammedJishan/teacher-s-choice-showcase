@@ -2,6 +2,7 @@ import fireImg from "@/assets/fire.jpg";
 import quakeImg from "@/assets/earthquake.jpg";
 import floodImg from "@/assets/flood.jpg";
 import cycloneImg from "@/assets/cyclone.jpg";
+import otherImg from "@/assets/other.jpg";
 
 export type ModuleStatus = "available" | "coming-soon";
 
@@ -82,6 +83,22 @@ export const modules: DisasterModule[] = [
       "Stay safe during the eye and aftermath",
     ],
   },
+  {
+    slug: "other",
+    name: "Other Emergencies",
+    short: "Other",
+    description: "Lockdowns, medical emergencies, gas leaks and more — future expansion for all-hazard readiness.",
+    status: "coming-soon",
+    image: otherImg,
+    lessons: 6,
+    eta: "Future expansion",
+    objectives: [
+      "Respond to medical emergencies and basic first aid",
+      "Follow lockdown and shelter-in-place procedures",
+      "Recognise gas leaks and chemical hazards",
+      "Communicate clearly during any emergency",
+    ],
+  },
 ];
 
 export const getModule = (slug: string) => modules.find((m) => m.slug === slug);
@@ -121,12 +138,12 @@ export const simulations = [
 ];
 
 export const badges = [
-  { id: "b1", name: "First Responder", desc: "Complete your first lesson", earned: true, tone: "teal" },
-  { id: "b2", name: "PASS Master", desc: "Ace the extinguisher quiz", earned: true, tone: "amber" },
-  { id: "b3", name: "Swift Evacuator", desc: "Evacuate in under 90 seconds", earned: true, tone: "indigo" },
-  { id: "b4", name: "7-Day Streak", desc: "Learn 7 days in a row", earned: true, tone: "teal" },
-  { id: "b5", name: "Hazard Hunter", desc: "Spot 20 hazards in simulations", earned: false, tone: "amber" },
-  { id: "b6", name: "Team Leader", desc: "Guide a group to safety", earned: false, tone: "indigo" },
+  { id: "b1", name: "Preparedness Pioneer", desc: "Complete your first lesson", earned: true, tone: "teal" },
+  { id: "b2", name: "Knowledge Explorer", desc: "Ace the extinguisher quiz", earned: true, tone: "amber" },
+  { id: "b3", name: "Smart Evacuator", desc: "Choose the safest route every time", earned: true, tone: "indigo" },
+  { id: "b4", name: "Calm Decision Maker", desc: "Stay calm in 5 timed scenarios", earned: true, tone: "teal" },
+  { id: "b5", name: "Hazard Detective", desc: "Spot 20 hazards in simulations", earned: false, tone: "amber" },
+  { id: "b6", name: "Safety Champion", desc: "Guide a group to safety", earned: false, tone: "indigo" },
   { id: "b7", name: "Fire Safety Graduate", desc: "Complete all fire lessons", earned: false, tone: "teal" },
   { id: "b8", name: "Multi-Hazard Hero", desc: "Complete two disaster modules", earned: false, tone: "indigo" },
 ] as const;
@@ -134,7 +151,7 @@ export const badges = [
 export const recentActivities = [
   { title: "Completed “The PASS Technique”", time: "2 hours ago", xp: 80, kind: "lesson" },
   { title: "Classroom Evacuation · Score 92%", time: "Yesterday", xp: 120, kind: "simulation" },
-  { title: "Earned badge “Swift Evacuator”", time: "Yesterday", xp: 50, kind: "badge" },
+  { title: "Earned badge “Smart Evacuator”", time: "Yesterday", xp: 50, kind: "badge" },
   { title: "Completed “RACE Response Protocol”", time: "2 days ago", xp: 80, kind: "lesson" },
 ];
 
@@ -212,7 +229,7 @@ export const moduleCompletion = [
 export const teacherActivities = [
   { who: "Priya Nair", what: "scored 96% in Science Lab Fire", time: "12 min ago" },
   { who: "Kabir Singh", what: "completed Reading Evacuation Maps", time: "40 min ago" },
-  { who: "Ananya Iyer", what: "earned badge Hazard Hunter", time: "1 hour ago" },
+  { who: "Ananya Iyer", what: "earned badge Hazard Detective", time: "1 hour ago" },
   { who: "Rohan Mehta", what: "started Blocked Stairwell", time: "2 hours ago" },
   { who: "Meera Joshi", what: "submitted Fire Drill Reflection", time: "3 hours ago" },
 ];
@@ -261,4 +278,25 @@ export const reports = [
   { title: "Grade 9 – B Progress Report", type: "Class", date: "Oct 18, 2026", size: "860 KB" },
   { title: "Fire Drill Readiness Audit", type: "Compliance", date: "Oct 12, 2026", size: "1.1 MB" },
   { title: "Simulation Performance Breakdown", type: "Analytics", date: "Oct 05, 2026", size: "1.8 MB" },
+];
+
+export const challenges = [
+  { id: "c1", title: "Spot the Hazards: Classroom", type: "Hazard identification", xp: 100, minutes: 5, done: true, score: 90 },
+  { id: "c2", title: "Safe or Unsafe?", type: "Decision-making", xp: 120, minutes: 6, done: true, score: 85 },
+  { id: "c3", title: "Know Your Alarms", type: "Warning signals", xp: 80, minutes: 4, done: false, score: null },
+  { id: "c4", title: "What Would You Do?", type: "Scenario quiz", xp: 150, minutes: 8, done: false, score: null },
+  { id: "c5", title: "60-Second Response Mission", type: "Timed mission", xp: 200, minutes: 1, done: false, score: null },
+];
+
+export interface QuizQ { q: string; options: string[]; answer: number; why: string }
+export const sampleQuiz: QuizQ[] = [
+  { q: "You hear the fire alarm during class. What should you do first?", options: ["Collect your bag and phone", "Stop, stay calm and follow your teacher to the nearest exit", "Look for the fire", "Wait for a friend"], answer: 1, why: "Belongings waste time. Calmly following the evacuation route keeps everyone safe." },
+  { q: "The corridor is filling with smoke. How should you move?", options: ["Run upright quickly", "Stay low and crawl below the smoke", "Use the lift", "Open every door you pass"], answer: 1, why: "Cleaner, cooler air stays near the floor. Lifts can fail during fires." },
+  { q: "What does the 'P' in PASS stand for?", options: ["Push", "Pull the pin", "Point", "Pause"], answer: 1, why: "PASS = Pull the pin, Aim low, Squeeze the handle, Sweep side to side." },
+  { q: "Your exit is blocked. What is the best decision?", options: ["Push through the blockage", "Use the alternate exit shown on the evacuation map", "Hide in a cupboard", "Go back for your teacher"], answer: 1, why: "Every room has an alternate route. Knowing your evacuation map is key." },
+];
+
+export const upcomingAssignments = [
+  { title: "PASS Technique Mastery", due: "Oct 28", by: "Mrs. Kavita Rao" },
+  { title: "Know Your Alarms challenge", due: "Oct 31", by: "Mrs. Kavita Rao" },
 ];
